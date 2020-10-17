@@ -43,6 +43,7 @@ class FaceLivness extends Component {
         // ctx.strokeStyle = 'red';
         // ctx.lineWidth = 1;
         // ctx.stroke();
+        
         var formData = new FormData();
         formData.set("api_key", "Mzc0MTExMjUtNTBmMS00ZTA3LWEwNjktZjQxM2UwNjA3ZGEw");
         formData.set("secret_key", "YTE4YmM5YmYtZjZhYS00MTU5LWI4Y2EtYjQyYTRkNzAxOWZj")
