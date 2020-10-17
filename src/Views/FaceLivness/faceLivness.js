@@ -44,14 +44,14 @@ class FaceLivness extends Component {
         // ctx.lineWidth = 1;
         // ctx.stroke();
         var formData = new FormData();
-        formData.append("api_key", "Mzc0MTExMjUtNTBmMS00ZTA3LWEwNjktZjQxM2UwNjA3ZGEw");
-        formData.append("secret_key", "YTE4YmM5YmYtZjZhYS00MTU5LWI4Y2EtYjQyYTRkNzAxOWZj")
+        formData.set("api_key", "Mzc0MTExMjUtNTBmMS00ZTA3LWEwNjktZjQxM2UwNjA3ZGEw");
+        formData.set("secret_key", "YTE4YmM5YmYtZjZhYS00MTU5LWI4Y2EtYjQyYTRkNzAxOWZj")
         axios.post('https://109.238.12.179:5000/v1/api/client/authentificate', formData)
             .then((res) => {
                 console.log("API Call---:", res.data)
 
             }).catch((error) => {
-                console.log(error)
+                console.log("errors---:", error)
             });
     }
 
