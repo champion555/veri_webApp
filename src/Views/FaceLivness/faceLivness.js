@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+
+import ApiService from '../../Services/ApiCallServices'
 
 import Header from "../../Components/header/header"
 import FaceDetector from "../../lib/FaceDetector"
@@ -44,16 +45,25 @@ class FaceLivness extends Component {
         // ctx.lineWidth = 1;
         // ctx.stroke();
         console.log("API Call-Sending--:")
-        var formData = new FormData();
+        let url = "https://109.238.12.179:5000/v1/api/client/authentificate";
+        let formData = new FormData();
         formData.set("api_key", "Mzc0MTExMjUtNTBmMS00ZTA3LWEwNjktZjQxM2UwNjA3ZGEw");
         formData.set("secret_key", "YTE4YmM5YmYtZjZhYS00MTU5LWI4Y2EtYjQyYTRkNzAxOWZj")
-        axios.post('https://109.238.12.179:5000/v1/api/client/authentificate', formData)
-            .then((res) => {
+        ApiService.apiCall('post', url, formData, (res) => {
+            try {
+                // if (res.data.status == 200) {
+                //   alert("this data is updated !")
+                //   this.props.history.push(`/programs/plans`)
+                // } else {
+                //   alert("this request failed !")
+                // }
                 console.log("API Call---:", res.data)
-
-            }).catch((error) => {
+            } catch (error) {
                 console.log("errors---:", error)
-            });
+            }
+        })
+
+
     }
 
     render() {
