@@ -16,3 +16,7 @@ canvas {
   width: 100%;  
   height: calc(100vh - 230px);
 }
+video  {
+  width: 100% !important;
+  position: absolute;
+}

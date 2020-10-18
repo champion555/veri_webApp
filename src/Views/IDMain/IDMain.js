@@ -38,19 +38,27 @@ class IDMain extends Component {
                         <div className="markView">
                         <img src={this.state.ImgSrc} className="identityIcon"/>
                         </div>
-
                     </div>
                     <IDDocButton
                         label="National ID Card"
                         imgURL={this.state.IDCardSrc}
+                        onClick={()=>{
+                            this.props.history.push('idcard')
+                        }}
                     />
                     <IDDocButton
                         label="Passport"
                         imgURL={this.state.PassportSrc}
+                        onClick={()=>{
+                            this.props.history.push('passport')
+                        }}
                     />
                     <IDDocButton
                         label="Resident Permit"
                         imgURL={this.state.ResidentSrc}
+                        onClick={()=>{
+                            this.props.history.push('residentpermit')
+                        }}
                     />
                 </div>
             </div>

@@ -1,0 +1,42 @@
+.Camera-Container{
+    z-index: 1;
+    width: 100%;
+    position: absolute;
+    display: flex;
+}
+.previewImg{
+    width: 100%;
+}
+.preview-container{
+    z-index: 10;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+}
+.capture-containger{
+    width: 100%;
+    height: 100vh;
+    z-index: 55;
+    position: absolute;
+}
+.Background-Container{
+    width: 100%;
+    position: absolute;
+    z-index: 30;
+}
+.CaptureButton{
+    width: 80px;
+    height: 80px;
+}
+.MessageTitle{
+    color: white;
+    font-style: italic;
+}
+.txtMessage{
+    color: white;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 20px;
+}
+

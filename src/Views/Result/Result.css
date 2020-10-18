@@ -1,0 +1,18 @@
+.body-container{
+    width: 100%;
+    height: calc(100vh - 50px);
+}
+.resultMark{
+    width: 100px;
+    height: 100px;
+    margin-top: 180px;
+}
+.txtLivnessResult{
+    font-size: 20px;
+    font-weight: bold;
+}
+.socre-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

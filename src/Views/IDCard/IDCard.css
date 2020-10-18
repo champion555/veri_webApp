@@ -1,0 +1,44 @@
+.Img-Container{
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 100px);
+    margin-top: 50px;
+}
+.Icon-Container{
+    z-index: 20;
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 100px);
+    margin-top: 50px;
+
+}
+.FrontCard-Container{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* margin-top: 50px; */
+}
+.BackCard-Container{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.FrontCard{
+    width: 90%;
+    height: 230px;
+}
+.BackCard{
+    width: 90%;
+    height: 230px;
+}
+.CameraIcon{
+    width: 40px;
+    height: 40px;
+}

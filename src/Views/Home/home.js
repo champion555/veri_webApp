@@ -50,7 +50,7 @@ class Home extends Component {
                             this.props.history.push('facelivness');
                         }}
                     />
-                    <Checkbox defaultChecked={this.state.flag} label={'Unchecked state'}
+                    <Checkbox defaultChecked={this.state.flag} label={'I accepted the geneal condition and policy'}
                         onChange={() => {
                             if(this.state.flag) {
                                 this.setState({
@@ -63,6 +63,7 @@ class Home extends Component {
                             }
                            
                         }}
+                        style ={{marginTop:"20px"}}
                     />
                 </div>
             </div>

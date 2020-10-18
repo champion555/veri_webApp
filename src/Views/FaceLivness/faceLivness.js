@@ -36,51 +36,49 @@ class FaceLivness extends Component {
         })
     }
 
-    componentDidMount = () => {
-        // let CanvasCustom = document.getElementById("myCanvas");
-        // let ctx=CanvasCustom.getContext("2d");
-        // ctx.beginPath();
-        // ctx.arc(150, 75, 68, 0, 2*Math.PI);
-        // ctx.strokeStyle = 'red';
-        // ctx.lineWidth = 1;
-        // ctx.stroke();
-        console.log("API Call-Sending--:")
-        let url = "https://109.238.12.179:5000/v1/api/client/authentificate";
-        let formData = new FormData();
-        formData.set("api_key", "Mzc0MTExMjUtNTBmMS00ZTA3LWEwNjktZjQxM2UwNjA3ZGEw");
-        formData.set("secret_key", "YTE4YmM5YmYtZjZhYS00MTU5LWI4Y2EtYjQyYTRkNzAxOWZj")
-        ApiService.apiCall('post', url, formData, (res) => {
-            try {
-                // if (res.data.status == 200) {
-                //   alert("this data is updated !")
-                //   this.props.history.push(`/programs/plans`)
-                // } else {
-                //   alert("this request failed !")
-                // }
-                console.log("API Call---:", res.data)
-            } catch (error) {
-                console.log("errors---:", error)
-            }
-        })
+    // componentDidMount = () => {
+    //     // let CanvasCustom = document.getElementById("myCanvas");
+    //     // let ctx=CanvasCustom.getContext("2d");
+    //     // ctx.beginPath();
+    //     // ctx.arc(150, 75, 68, 0, 2*Math.PI);
+    //     // ctx.strokeStyle = 'red';
+    //     // ctx.lineWidth = 1;
+    //     // ctx.stroke();
+    //     console.log("API Call-Sending--:")
+    //     let url = "https://109.238.12.179:5000/v1/api/client/authentificate";
+    //     let formData = new FormData();
+    //     formData.set("api_key", "Mzc0MTExMjUtNTBmMS00ZTA3LWEwNjktZjQxM2UwNjA3ZGEw");
+    //     formData.set("secret_key", "YTE4YmM5YmYtZjZhYS00MTU5LWI4Y2EtYjQyYTRkNzAxOWZj")
+    //     ApiService.apiCall('post', url, formData, (res) => {
+    //         try {
+    //             // if (res.data.status == 200) {
+    //             //   alert("this data is updated !")
+    //             //   this.props.history.push(`/programs/plans`)
+    //             // } else {
+    //             //   alert("this request failed !")
+    //             // }
+    //             console.log("API Call---:", res.data)
+    //         } catch (error) {
+    //             console.log("errors---:", error)
+    //         }
+    //     })
+    // }
 
-
-    }
+    // onCapture=()=>{
+    //     let FaceDetectorContainer = document.getElementById("FaceDetectorContainer");
+    //     FaceDetectorContainer.getContext('2d', { alpha: false });
+    //     console.log("clicked:", FaceDetectorContainer.toDataURL())
+    // }
 
     render() {
         const videoConstraints = {
             facingMode: "user"
         };
-
-
-
-
         let { faceDetectStatus, ImgSrc } = this.state
-
-
         return (
             <div style={{ width: '100%' }}>
                 <Header headerText={this.state.sendHeaderText} />
-                <FaceDetector onSelectImage={this.handleImage} active={this.state.detectorActive}>
+                <FaceDetector onSelectImage={this.handleImage} active={this.state.detectorActive} id="FaceDetectorContainer" > 
                     {facesData => {
 
                         facesData.map(face => {
@@ -135,6 +133,7 @@ class FaceLivness extends Component {
                                 </div>
                                 <div className="message-container">
                                     <p className="txtMessage">{faceDetectStatus}</p>
+                                    {/* <button onClick={this.onCapture}>Capture</button> */}
                                 </div>
                             </div>
                         )
