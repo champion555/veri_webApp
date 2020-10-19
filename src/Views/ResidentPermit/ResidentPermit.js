@@ -3,29 +3,49 @@ import Header from "../../Components/header/header"
 import FrontIDCardURL from "../../assets/ic_idcard_front.png"
 import BackIDCardURL from "../../assets/ic_idcard_back.png"
 import CammeraIconURL from "../../assets/ic_camera.png"
+import Button from "../../Components/button/button"
 import './ResidentPermit.css'
 
 
-class IDCard extends Component {
+class ResidentPermit extends Component {
     constructor(props) {
         super(props);
         this.state = {
             sendHeaderText: 'Resident Permit',
             FrontImageSrcs: FrontIDCardURL,
             BackImageSrcs: BackIDCardURL,
-            CameraSrc: CammeraIconURL
+            CameraSrc: CammeraIconURL,
+            FrontResident:"front of Resident",
+            BackResident: "back of Resident",
+            FrontResidentButtonTxt: "capture front of Resident Permit",
+            BackResidentButtonTxt: "capture back of Resident Permit",
         }
     }
 
-    // ComponentDidamount = () => {
-    //     console.log("home")
-    // }
+    componentDidMount = () => {
+        console.log("CountryName", localStorage.getItem("CountryName"))
+        
+        if(localStorage.getItem("frontResident")){
+            this.setState({FrontImageSrcs:localStorage.getItem("frontResident")})
+            this.setState({FrontResidentButtonTxt:"Edit front of Resident Permit"})
+
+        }
+        if(localStorage.getItem("backResident")){
+            this.setState({BackImageSrcs:localStorage.getItem("backResident")})
+            this.setState({BackResidentButtonTxt:"Edit back of Resident Permit"})
+        }
+        
+    }
+    onCameraTarget=(CardTarget)=>{
+        localStorage.setItem("CardTarget", CardTarget)
+        this.props.history.push(`/iddoccamera`)
+    }
 
 
     render() {
         return (
             <div>
-                <Header headerText={this.state.sendHeaderText} />
+                <Header headerText={this.state.sendHeaderText} goIDMain="IDDoc"/>
                 <div className="Img-Container">
                     <div className="FrontCard-Container">
                         <img src={this.state.FrontImageSrcs} className="FrontCard" />
@@ -35,13 +55,21 @@ class IDCard extends Component {
                     </div>
                 </div>
                 <div className = "Icon-Container" >
-                    <div className="FrontCard-Container" onClick={()=>{this.props.history.push('iddoccamera');}}>
+                    <div className="FrontCard-Container" onClick={this.onCameraTarget.bind(this, this.state.FrontResident)}>
                         <img src={this.state.CameraSrc} className="CameraIcon" />
-                        <p style = {{margin:"0px",color:"white"}}>capture Front Resident Permit</p>
+                        <p style = {{margin:"0px",color:"white"}}>{this.state.FrontResidentButtonTxt}</p>
                     </div>
-                    <div className="BackCard-Container" onClick={()=>{this.props.history.push('iddoccamera');}}>
+                    <div className="BackCard-Container" onClick={this.onCameraTarget.bind(this, this.state.BackResident)}>
                         <img src={this.state.CameraSrc} className="CameraIcon" />
-                        <p style = {{margin:"0px",color:"white"}}>capture Back Resident Permit</p>
+                        <p style = {{margin:"0px",color:"white"}}>{this.state.BackResidentButtonTxt}</p>
+                    </div>
+                    <div style={{width:"100%",justifyContent:"center",display:"flex"}}>
+                        <Button
+                            label="Upload"
+                            onClick={() => {
+                                this.props.history.push('poadoc');
+                            }}
+                        />
                     </div>
                 </div>
 
@@ -50,4 +78,4 @@ class IDCard extends Component {
     }
 }
 
-export default IDCard;
+export default ResidentPermit;

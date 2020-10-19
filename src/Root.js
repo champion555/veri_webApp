@@ -7,8 +7,11 @@ import IDMain from './Views/IDMain/IDMain';
 import Passport from './Views/Passport/passport'
 import FaceLivness from './Views/FaceLivness/faceLivness'
 import ResidentPermit from './Views/ResidentPermit/ResidentPermit'
+import POADoc from './Views/POADoc/POADoc'
 import Result from './Views/Result/Result'
 import IDDocCamera from './Views/IDDocCamera/IDDocCamera'
+import POADocCamera from './Views/POADocCamera/POADocCamera'
+
 
 const Routes = () => {
     return (
@@ -22,6 +25,8 @@ const Routes = () => {
                 <Route exact path="/facelivness" component={FaceLivness} />
                 <Route exact path="/result" component={Result} />
                 <Route exact path="/iddoccamera" component={IDDocCamera} />
+                <Route exact path="/poadoccamera" component={POADocCamera} />
+                <Route exact path="/poadoc" component={POADoc} />
             </Switch>
         </BrowserRouter>
     )

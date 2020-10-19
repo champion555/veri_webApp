@@ -13,7 +13,7 @@
     margin-top: 50px;
 
 }
-.Passport-Container{
+.FrontCard-Container{
     width: 100%;
     height: 250px;
     display: flex;
@@ -22,11 +22,31 @@
     flex-direction: column;
     /* margin-top: 50px; */
 }
-.Passport{
+.BackCard-Container{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.FrontCard{
+    width: 90%;
+    height: 230px;
+}
+.BackCard{
     width: 90%;
     height: 230px;
 }
 .CameraIcon{
     width: 40px;
     height: 40px;
+}
+.id-button-preview{
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }

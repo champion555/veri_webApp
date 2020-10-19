@@ -4,6 +4,7 @@ import Webcam from "react-webcam";
 import './IDDocCamera.css'
 import BackImgURL from "../../assets/ic_background.png"
 import BtnImgURL from "../../assets/camera_take.png"
+import Button from "../../Components/button/button"
 
 class IDDocCamera extends Component {
     constructor(props) {
@@ -13,18 +14,50 @@ class IDDocCamera extends Component {
             previewImgHeight: window.innerHeight * 0.77,
             backimgSrc: BackImgURL,
             btnimgSrc: BtnImgURL,
-            titleMarginTop: window.innerHeight*0.02
+            titleMarginTop: window.innerHeight * 0.02,
+            idDocType: "",
+            PreviewImageStatus: false,
         }
     }
+    componentDidMount = () => {
+        console.log("received Data:", localStorage.getItem("CardTarget"))
+        this.setState({ idDocType: localStorage.getItem("CardTarget") })
+    }
+
     setRef = webcam => {
         this.webcam = webcam;
     };
 
     capture = () => {
         const imageSrc = this.webcam.getScreenshot();
-        this.previewImage(imageSrc, (url) => {
+        this.previewImage(imageSrc, (url) => { 
             this.setState({ url });
             console.log(url, imageSrc);
+            this.setState({ PreviewImageStatus: true })
+            let { idDocType } = this.state
+            if (idDocType == "back  of IDCard") {
+                localStorage.setItem("backIDCard",url)
+                console.log("backIdcardURL"+url)
+            // alert(localStorage.getItem("backIDCard"))
+                
+
+            } else if (idDocType == "front of IDCard") {
+                localStorage.setItem("frontIDCard",url)
+                console.log("frontIdcardURL"+url)
+
+            } else if (idDocType == "passport") {
+                localStorage.setItem("passport",url)
+                console.log("passportURL"+url)
+
+            } else if (idDocType == "front of Resident") {
+                localStorage.setItem("frontResident",url)
+                console.log("frontResidentURL"+url)
+
+            } else if (idDocType == "back of Resident") {
+                localStorage.setItem("backResident",url)
+                console.log("backResidentURL"+url)
+
+            }
         });
     };
     previewImage = (imageBase64, cb) => {
@@ -40,10 +73,15 @@ class IDDocCamera extends Component {
             cb(canvas.toDataURL("image/jpeg"))
         };
     };
+    onReTake = () => {
+        this.setState({ PreviewImageStatus: false })
+    }
+      
+
     render() {
         const videoConstraints = {
-            // facingMode: "user"
-            facingMode: { exact: "environment" }
+            facingMode: "user"
+            // facingMode: { exact: "environment" }
         };
 
         return (
@@ -54,17 +92,48 @@ class IDDocCamera extends Component {
                     screenshotFormat="image/jpeg"
                     videoConstraints={videoConstraints}
                 />
-                <div className="preview-container">
-                    <img src={this.state.url}  className="previewImg" style={{ height: this.state.previewImgHeight }} />
-                </div>
-                <div className = "Background-Container">
-                    <img src={this.state.backimgSrc} style = {{width:"100%",height:"100vh"}}/>
+                {(this.state.PreviewImageStatus) && <div className="preview-container">
+                    <img src={this.state.url} className="previewImg" style={{ height: this.state.previewImgHeight }} />
+                </div>}
+                <div className="Background-Container">
+                    <img src={this.state.backimgSrc} style={{ width: "100%", height: "100vh" }} />
                 </div>
                 <div className="capture-containger">
-                    <p className = "MessageTitle" style={{marginTop: window.innerHeight*0.12}}>powerd by BIOMIID</p>
-                    <p className = "txtMessage" style={{marginTop: window.innerHeight*0.38}}>Place the front of ID card inside the frame and take the photo</p>                    
-                    <img src={this.state.btnimgSrc} onClick = {this.capture} className = "CaptureButton" style={{marginTop: window.innerHeight*0.2}} />
+                    <p className="MessageTitle" style={{ marginTop: window.innerHeight * 0.12 }}>powerd by BIOMIID</p>
+                    <p className="txtMessage" style={{ marginTop: window.innerHeight * 0.38 }}>Place the {this.state.idDocType} inside the frame and take the photo</p>
+                    {(!this.state.PreviewImageStatus) && <img src={this.state.btnimgSrc} onClick={this.capture} className="CaptureButton" style={{ marginTop: window.innerHeight * 0.2 }} />}
                 </div>
+                {(this.state.PreviewImageStatus) &&
+                    <div className="id-button-preview" style={{ marginTop: window.innerHeight * 0.7 }}>
+                        <Button
+                            label="My photo is clear"
+                            onClick={() => {
+
+                                let { idDocType } = this.state
+                                if (idDocType == "back  of IDCard") {
+                                    this.props.history.push('idcard');                    
+                                } else if (idDocType == "front of IDCard") {
+                                    this.props.history.push('idcard');
+                    
+                                } else if (idDocType == "passport") {
+                                    this.props.history.push('passport');
+                    
+                                } else if (idDocType == "front of Resident") {
+                                    this.props.history.push('residentpermit');
+                    
+                                } else if (idDocType == "back of Resident") {
+                                    this.props.history.push('residentpermit');
+                    
+                                }
+                                // this.props.history.push('residentpermit');
+                            }}
+                        />
+                        <Button
+                            label="Re-take"
+                            onClick={this.onReTake}
+                        />
+                    </div>}
+
 
             </div>
         );

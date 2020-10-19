@@ -39,7 +39,12 @@ class header extends Component {
         }
     }
     goBack = () => {
-        this.props.history.goBack()
+        
+        if (this.props.goIDMain == "IDDoc"){
+            this.props.history.push('idmain');
+        }else{
+            this.props.history.goBack()
+        }
     }
 
     render() {

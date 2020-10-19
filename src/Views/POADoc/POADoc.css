@@ -1,11 +1,11 @@
-.Img-Container{
+.POA-Img-Container{
     z-index: 1;
     position: absolute;
     width: 100%;
     height: calc(100vh - 100px);
     margin-top: 50px;
 }
-.Icon-Container{
+.POA-Icon-Container{
     z-index: 20;
     position: absolute;
     width: 100%;
@@ -13,18 +13,18 @@
     margin-top: 50px;
 
 }
-.Passport-Container{
+.POA-Container{
     width: 100%;
-    height: 250px;
+    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     /* margin-top: 50px; */
 }
-.Passport{
+.POADoc{
     width: 90%;
-    height: 230px;
+    height: 500px;
 }
 .CameraIcon{
     width: 40px;

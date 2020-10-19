@@ -32,7 +32,7 @@ class Home extends Component {
             <div style={{ background: 'black' }}>
                 <Header headerText={this.state.sendHeaderText} />
                 <div className="body-container">
-                    <div className="logoView">
+                    <div className="logoView" style={{height: window.innerHeight*0.15,marginBottom: window.innerHeight*0.2}}>
                         <img src = {this.state.ImageSrcs} className = "logoIcon"/>
                     </div>
                     <Button
@@ -41,15 +41,15 @@ class Home extends Component {
                             if(this.state.flag)
                                 this.props.history.push('idmain');
                             else
-                                alert('Please check this')
+                                alert('Please accept the general condition and policy')
                         }}
                     />
-                    <Button
+                    {/* <Button
                         label="Faceliveness"
                         onClick={() => {
                             this.props.history.push('facelivness');
                         }}
-                    />
+                    /> */}
                     <Checkbox defaultChecked={this.state.flag} label={'I accepted the geneal condition and policy'}
                         onChange={() => {
                             if(this.state.flag) {
