@@ -50,10 +50,10 @@ class IDMain extends Component {
     render() {
         return (
             <div style={{ background: 'black' }}>
-                <Header headerText={this.state.sendHeaderText} />
+                
                 {(!this.state.selectCountryStatus) &&
                     <>
-
+                        <Header headerText={this.state.sendHeaderText} />
                         <div className="body-container">
                             <div className="mark-container">
                                 <div className="markView">
@@ -78,7 +78,9 @@ class IDMain extends Component {
                         </div>
                     </>}
                 {(this.state.selectCountryStatus) &&
+                
                     <div style={{ background: 'white' }}>
+                        <Header headerText="Select the country" />
                         {this.state.options.map(CountryItem => {
                             let CountryFlag = "https://www.countryflags.io/" + CountryItem.value + "/flat/64.png";
                             return (

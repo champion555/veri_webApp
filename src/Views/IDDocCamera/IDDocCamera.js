@@ -80,8 +80,8 @@ class IDDocCamera extends Component {
 
     render() {
         const videoConstraints = {
-            facingMode: "user"
-            // facingMode: { exact: "environment" }
+            // facingMode: "user"
+            facingMode: { exact: "environment" }
         };
 
         return (
