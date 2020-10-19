@@ -25,15 +25,22 @@ class IDCard extends Component {
     componentDidMount = () => {
         console.log("CountryName", localStorage.getItem("CountryName"))
 
-        if (localStorage.getItem("backIDCard")) {
-            // alert(localStorage.getItem("backIDCard"))
-            // this.setState({BackImageSrcs:URL.createObjectURL(localStorage.getItem("backIDCard"))})
-            this.setState({ BackImageSrcs: localStorage.getItem("backIDCard") })
+        // if (localStorage.getItem("backIDCard")) {
+        //     this.setState({ BackImageSrcs: localStorage.getItem("backIDCard") })
+        //     this.setState({BackIDButtonTxt:"Edit back of ID Card"})
+
+        // }
+        // if (localStorage.getItem("frontIDCard")) {
+        //     this.setState({ FrontImageSrcs: localStorage.getItem("frontIDCard") })
+        //     this.setState({FrontIDButtonTxt:"Edit front of ID Card"})
+        // }
+        if (window.front_idcard) {
+            this.setState({ BackImageSrcs: window.front_idcard })
             this.setState({BackIDButtonTxt:"Edit back of ID Card"})
 
         }
-        if (localStorage.getItem("frontIDCard")) {
-            this.setState({ FrontImageSrcs: localStorage.getItem("frontIDCard") })
+        if (window.back_idcard) {
+            this.setState({ FrontImageSrcs: window.back_idcard })
             this.setState({FrontIDButtonTxt:"Edit front of ID Card"})
         }
 

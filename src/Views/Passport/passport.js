@@ -20,9 +20,13 @@ class Passport extends Component {
 
     componentDidMount = () => {
         console.log("CountryName", localStorage.getItem("CountryName"))
-        if (localStorage.getItem("passport")) {
-            this.setState({ PassportSrcs: localStorage.getItem("passport") })
-            this.setState({ PassportButtonTex: "Edit the passport" })
+        // if (localStorage.getItem("passport")) {
+        //     this.setState({ PassportSrcs: localStorage.getItem("passport") })
+        //     this.setState({ PassportButtonTex: "Edit the passport" })
+        // }
+        if(window.passport){
+            this.setState({ PassportSrcs: window.passport })
+                this.setState({ PassportButtonTex: "Edit the passport" })
         }
     }
     onCameraTarget = (CardTarget) => {

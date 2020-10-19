@@ -21,8 +21,8 @@ class POADoc extends Component {
     componentDidMount = () => {
         // console.log("CountryName", localStorage.getItem("CountryName"))
         console.log("poaDoc")
-        if (localStorage.getItem("poaDoc")) {
-            this.setState({ POADocSrc: localStorage.getItem("poaDoc") })
+        if (window.poa_doc) {
+            this.setState({ POADocSrc: window.poa_doc })
             this.setState({buttonMes:"Edit the POADoc"})
         }
     }

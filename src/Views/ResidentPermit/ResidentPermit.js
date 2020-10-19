@@ -23,15 +23,23 @@ class ResidentPermit extends Component {
     }
 
     componentDidMount = () => {
-        console.log("CountryName", localStorage.getItem("CountryName"))
-        
-        if(localStorage.getItem("frontResident")){
-            this.setState({FrontImageSrcs:localStorage.getItem("frontResident")})
+        console.log("CountryName", localStorage.getItem("CountryName"))        
+        // if(localStorage.getItem("frontResident")){
+        //     this.setState({FrontImageSrcs:localStorage.getItem("frontResident")})
+        //     this.setState({FrontResidentButtonTxt:"Edit front of Resident Permit"})
+
+        // }
+        // if(localStorage.getItem("backResident")){
+        //     this.setState({BackImageSrcs:localStorage.getItem("backResident")})
+        //     this.setState({BackResidentButtonTxt:"Edit back of Resident Permit"})
+        // }
+        if (window.front_resident) {
+            this.setState({ FrontImageSrcs: window.front_resident })
             this.setState({FrontResidentButtonTxt:"Edit front of Resident Permit"})
 
         }
-        if(localStorage.getItem("backResident")){
-            this.setState({BackImageSrcs:localStorage.getItem("backResident")})
+        if (window.back_resident) {
+            this.setState({ BackImageSrcs: window.back_resident })
             this.setState({BackResidentButtonTxt:"Edit back of Resident Permit"})
         }
         

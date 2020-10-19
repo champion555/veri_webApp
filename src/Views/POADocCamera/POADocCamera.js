@@ -27,7 +27,8 @@ class POADocCamera extends Component {
             this.setState({ url });
             console.log(url, imageSrc);
             this.setState({ PreviewImageStatus: true })
-            localStorage.setItem("poaDoc", url)
+            // localStorage.setItem("poaDoc", url)
+            window.poa_doc = url
         });
     };
     onReTake = () => {
