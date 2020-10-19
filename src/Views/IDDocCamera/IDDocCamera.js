@@ -37,25 +37,18 @@ class IDDocCamera extends Component {
             let { idDocType } = this.state
             if (idDocType == "back  of IDCard") {
                 localStorage.setItem("backIDCard",url)
-                console.log("backIdcardURL"+url)
-            // alert(localStorage.getItem("backIDCard"))
-                
 
             } else if (idDocType == "front of IDCard") {
                 localStorage.setItem("frontIDCard",url)
-                console.log("frontIdcardURL"+url)
 
             } else if (idDocType == "passport") {
                 localStorage.setItem("passport",url)
-                console.log("passportURL"+url)
-
+                
             } else if (idDocType == "front of Resident") {
                 localStorage.setItem("frontResident",url)
-                console.log("frontResidentURL"+url)
 
             } else if (idDocType == "back of Resident") {
                 localStorage.setItem("backResident",url)
-                console.log("backResidentURL"+url)
 
             }
         });

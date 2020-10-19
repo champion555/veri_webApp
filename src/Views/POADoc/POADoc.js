@@ -35,7 +35,7 @@ class POADoc extends Component {
     render() {
         return (
             <div>
-                <Header headerText={this.state.sendHeaderText} />
+                <Header headerText={this.state.sendHeaderText} goIDMain="POADoc"/>
                 <div className="POA-Img-Container">
                     <div className="POA-Container">
                         <img src={this.state.POADocSrc} className="POADoc" />

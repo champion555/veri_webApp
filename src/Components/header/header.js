@@ -42,6 +42,10 @@ class header extends Component {
         
         if (this.props.goIDMain == "IDDoc"){
             this.props.history.push('idmain');
+        }else if(this.props.goIDMain == "POADoc"){
+            this.props.history.push('residentpermit');
+        }else if(this.props.goIDMain == "home"){
+            this.props.history.push('')
         }else{
             this.props.history.goBack()
         }
