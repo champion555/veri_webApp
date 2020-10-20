@@ -52,9 +52,11 @@ export default class FaceDetector extends Component {
     this.canvas.getContext('2d', { alpha: false })
     imgURL = this.canvas.toDataURL()
     // console.log("img url_Child : ", imgURL)
-
-    this.props.onSelectImage(imgURL);            
-}
+    if (this.props.detectorActiveflag) {
+    console.log("img url_Child : ", imgURL)
+      this.props.onSelectImage(imgURL);
+    }
+  }
 
   // OnGetImageBtn = () => {
   //   console.log("GetIMageBtn:", this.imageData)
@@ -80,7 +82,7 @@ export default class FaceDetector extends Component {
         <canvas
           ref={ref => this.canvas = ref}
           style={{ display: this.props.showCanvas ? 'inline' : 'none', transform: 'rotateY(180deg)' }}
-         
+
         />
         {this.props.children && this.props.children(relativeFacesData)}
         {/* <button onClick={this.OnGetImageBtn}>OnGetImage</button>
@@ -167,8 +169,8 @@ export default class FaceDetector extends Component {
 
       x = Math.min(Math.max(x, 0), 100)
       y = Math.min(Math.max(y, 0), 100)
-      
-      // this.handleImage()
+
+      this.handleImage()
       // console.log("x:", faceData.face.x)
       // console.log("y:", faceData.face.y)
       // console.log("width:", faceData.face.width)

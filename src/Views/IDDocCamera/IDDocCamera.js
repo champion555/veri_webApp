@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import Header from "../../Components/header/header"
 import Webcam from "react-webcam";
+
+import { Crop, Preview } from "react-simple-crop";
+
 import './IDDocCamera.css'
 import BackImgURL from "../../assets/ic_background.png"
 import BtnImgURL from "../../assets/camera_take.png"
 import Button from "../../Components/button/button"
+
+const imageRef = React.createRef();
 
 class IDDocCamera extends Component {
     constructor(props) {
@@ -17,6 +22,13 @@ class IDDocCamera extends Component {
             titleMarginTop: window.innerHeight * 0.02,
             idDocType: "",
             PreviewImageStatus: false,
+            cropValue: {
+                height: 70,
+                width: 100,
+                x: 30,
+                y: 30
+            },
+
         }
     }
     componentDidMount = () => {
@@ -30,14 +42,15 @@ class IDDocCamera extends Component {
 
     capture = () => {
         const imageSrc = this.webcam.getScreenshot();
-        this.previewImage(imageSrc, (url) => { 
+        this.previewImage(imageSrc, (url) => {
             this.setState({ url });
             console.log(url, imageSrc);
+            // this.setFilePreview(url)
             this.setState({ PreviewImageStatus: true })
             let { idDocType } = this.state
             if (idDocType == "back  of IDCard") {
                 // localStorage.setItem("backIDCard",url)
-                window.front_idcard = url                
+                window.front_idcard = url
 
             } else if (idDocType == "front of IDCard") {
                 // localStorage.setItem("frontIDCard",url)
@@ -74,7 +87,31 @@ class IDDocCamera extends Component {
     onReTake = () => {
         this.setState({ PreviewImageStatus: false })
     }
-      
+
+    // handFileUpload = (IMageURL) => {
+    //     if (!IMageURL) {
+    //         return;
+    //     }
+
+    //     const reader = new FileReader();
+
+    //     const file = IMageURL;
+
+    //     reader.addEventListener("load", () => this.setFilePreview(reader.result));
+
+    //     reader.readAsDataURL(file);
+    // };
+
+    // setFilePreview = (reader) => {
+    //     this.setState({ filePreview: reader })
+    // }
+
+    // setValue = (crop) => {
+    //     this.setState({ cropValue: crop })
+    // }
+
+    // handleChange = (crop) => this.setValue({ ...this.state.cropValue, ...crop });
+
 
     render() {
         const videoConstraints = {
@@ -101,6 +138,8 @@ class IDDocCamera extends Component {
                     <p className="txtMessage" style={{ marginTop: window.innerHeight * 0.38 }}>Place the {this.state.idDocType} inside the frame and take the photo</p>
                     {(!this.state.PreviewImageStatus) && <img src={this.state.btnimgSrc} onClick={this.capture} className="CaptureButton" style={{ marginTop: window.innerHeight * 0.2 }} />}
                 </div>
+
+
                 {(this.state.PreviewImageStatus) &&
                     <div className="id-button-preview" style={{ marginTop: window.innerHeight * 0.7 }}>
                         <Button
@@ -109,19 +148,19 @@ class IDDocCamera extends Component {
 
                                 let { idDocType } = this.state
                                 if (idDocType == "back  of IDCard") {
-                                    this.props.history.push('idcard');                    
+                                    this.props.history.push('idcard');
                                 } else if (idDocType == "front of IDCard") {
                                     this.props.history.push('idcard');
-                    
+
                                 } else if (idDocType == "passport") {
                                     this.props.history.push('passport');
-                    
+
                                 } else if (idDocType == "front of Resident") {
                                     this.props.history.push('residentpermit');
-                    
+
                                 } else if (idDocType == "back of Resident") {
                                     this.props.history.push('residentpermit');
-                    
+
                                 }
                                 // this.props.history.push('residentpermit');
                             }}
@@ -130,6 +169,7 @@ class IDDocCamera extends Component {
                             label="Re-take"
                             onClick={this.onReTake}
                         />
+                        <canvas id="croppedCanvas" />
                     </div>}
 
 
