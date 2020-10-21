@@ -70,7 +70,7 @@ class FaceLivness extends Component {
                                     ImgSrc = DetectImgURL
                                     detectorActive = !detectorActive
 
-                                    this.toggleDetection()
+                                    // this.toggleDetection()
                                 } else {
                                     faceDetectStatus = "Please place your face on the oval and get closer to the device"
                               
